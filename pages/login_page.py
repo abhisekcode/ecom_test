@@ -28,3 +28,7 @@ class LogInPage(BasePage):
     def is_logged_in(self):
 
         return "inventory" in self.driver.current_url
+    
+    # temporary comment
+
+    # docker branch change
