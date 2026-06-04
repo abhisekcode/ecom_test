@@ -54,3 +54,4 @@ def test_ui_db_integration(driver, product_name):
     db_products = get_products()
 
     assert product_name in db_products
+    

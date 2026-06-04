@@ -35,5 +35,5 @@ def test_add_to_cart(driver):
         "Verify product exists in cart"
     ):
         assert cart.is_product_in_cart("Sauce Labs Bike Light")
-
+    assert "Wrong Text" in page_title
     # assert False #- added just to make it fail for SS
