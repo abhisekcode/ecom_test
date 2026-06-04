@@ -21,5 +21,8 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Create Database
+        run: python setup_db.py
+
       - name: Run Pytest
         run: pytest --headless
