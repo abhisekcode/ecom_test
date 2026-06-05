@@ -12,6 +12,7 @@ import pytest
     "Sauce Labs Bike Light"
 ])
 
+@pytest.mark.regression
 def test_ui_db_integration(driver, product_name):
 
     with open("data/test_data.json") as f:

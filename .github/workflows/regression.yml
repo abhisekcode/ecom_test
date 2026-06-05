@@ -33,8 +33,20 @@ jobs:
       - name: Create Database
         run: python setup_db.py
 
-      - name: Run Pytest
-        run: pytest --headless
+      - name: Show Trigger
+        run: echo "Triggered by ${{ github.event_name }}"
+
+      - name: Run Smoke Tests
+
+        if: github.event_name != 'schedule'
+
+        run: pytest -m smoke --headless
+
+      - name: Run Regression Tests
+
+        if: github.event_name == 'schedule'
+
+        run: pytest -m regression --headless
 
       - name: Upload Screenshots
 
