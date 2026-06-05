@@ -1,6 +1,8 @@
 from selenium import webdriver
 from utils.config_reader import load_config
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from selenium.webdriver.edge.options import Options as EdgeOptions
 
 
 class DriverManager:
@@ -25,10 +27,31 @@ class DriverManager:
             )
         
         elif browser == "edge":
-            driver = webdriver.Edge()
+
+            options = EdgeOptions()
+
+            if headless:
+                options.add_argument("--headless=new")
+                options.add_argument("--window-size=1920,1080")
+
+            driver = webdriver.Edge(
+                options=options
+            )
+
+        elif browser == "firefox":
+
+            options = FirefoxOptions()
+
+            if headless:
+                options.add_argument("-headless")
+
+            driver = webdriver.Firefox(
+                options=options
+            )
 
         else:
             raise Exception("Browser not supported")
         
-        driver.maximize_window()
+        if not headless:
+            driver.maximize_window()
         return driver

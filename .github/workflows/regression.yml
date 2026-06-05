@@ -15,6 +15,15 @@ on:
 jobs:
   run-tests:
 
+    strategy:
+
+      matrix:
+
+        browser:
+          - chrome
+          - firefox
+          - edge
+
     runs-on: ubuntu-latest
 
     steps:
@@ -40,13 +49,13 @@ jobs:
 
         if: github.event_name != 'schedule'
 
-        run: pytest -m smoke --headless
+        run: pytest -m smoke --headless --browser ${{ matrix.browser }}
 
       - name: Run Regression Tests
 
         if: github.event_name == 'schedule'
 
-        run: pytest -m regression --headless
+        run: pytest -m regression --headless --browser ${{ matrix.browser }}
 
       - name: Upload Screenshots
 
@@ -57,3 +66,6 @@ jobs:
         with:
           name: screenshots
           path: screenshots/
+
+      - name: Show Browser
+        run: echo "Running on ${{ matrix.browser }}"
