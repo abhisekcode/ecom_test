@@ -38,27 +38,9 @@ class ProductsPage(BasePage):
             )
         )
 
-        button = self.find(
-            button_locator
-        )
-
-        self.logger.info(
-            f"Before click text: {button.text}"
-        )
-
-        button.click()
-
-        new_button = self.find(
-            button_locator
-        )
-
-        self.logger.info(
-            f"After click text: {new_button.text}"
-        )
-
-        self.logger.info(
-            f"Current URL: "
-            f"{self.driver.current_url}"
+        self.driver.execute_script(
+            "arguments[0].click();",
+            self.find(button_locator)
         )
 
         self.logger.info(
