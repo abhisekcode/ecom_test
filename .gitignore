@@ -10,6 +10,7 @@ logs/
 
 # Reports
 reports/
+report.html
 
 # Screenshots
 screenshots/
@@ -27,9 +28,6 @@ allure-report/
 # OS Files
 .DS_Store
 Thumbs.db
-
-# HTML Reports
-*.html
 
 # Database
 *.db

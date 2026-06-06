@@ -8,17 +8,15 @@ on:
   pull_request:
     branches:
       - main
-  
+
   schedule:
     - cron: '0 2 * * *'
-      
+
 jobs:
   run-tests:
 
     strategy:
-
       matrix:
-
         browser:
           - chrome
           - firefox
@@ -43,33 +41,17 @@ jobs:
       - name: Create Database
         run: python setup_db.py
 
-      - name: Show Trigger
-        run: echo "Triggered by ${{ github.event_name }}"
-
       - name: Run Smoke Tests
-
         if: github.event_name != 'schedule'
-
         run: pytest -m smoke --headless --browser ${{ matrix.browser }}
 
       - name: Run Regression Tests
-
         if: github.event_name == 'schedule'
-
         run: pytest -m regression --headless --browser ${{ matrix.browser }}
 
       - name: Upload Screenshots
-
         if: always()
-
         uses: actions/upload-artifact@v4
-
         with:
           name: screenshots-${{ matrix.browser }}
           path: screenshots/
-
-      - name: Show Browser
-        run: echo "Running on ${{ matrix.browser }}"
-
-      - name: Show Browser
-        run: echo "${{ matrix.browser }}"

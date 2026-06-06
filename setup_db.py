@@ -13,5 +13,3 @@ CREATE TABLE cart (
 
 conn.commit()
 conn.close()
-
-print("DB recreated")
