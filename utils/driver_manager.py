@@ -25,6 +25,7 @@ class DriverManager:
             driver = webdriver.Chrome(
                 options=options
             )
+            driver.maximize_window()
         
         elif browser == "edge":
 

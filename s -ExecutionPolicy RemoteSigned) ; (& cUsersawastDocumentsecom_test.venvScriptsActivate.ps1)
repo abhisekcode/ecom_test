@@ -1,0 +1,22 @@
+[33m526c4f7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Matrix issue triages
+[33ma1f4a11[m Triage matrix issue changes
+[33m5769665[m Triaging matrix issue
+[33m7eecce1[m Triaging matrix issue for chrome browser
+[33mf452be0[m Added GitHub Actions Caching for faster execution
+[33m162a79b[m Added Matrix Strategy for cross browser testing
+[33m0513ac0[m Add conditional test execution smoke and regression
+[33m6635496[m Added cron job for nightly execution
+[33m4fb2a56[m Removed the intentional test failure for 1 TC that we used to test Screenshots
+[33m8baff70[m Added the artifact  section and intentionally failed on case to test artifacts
+[33mf82c129[m Updated the trigger section for PR validation
+[33m66b9d17[m Update  GitHub Actions workflow add create DB
+[33m5f649dd[m Add GitHub Actions workflow
+[33m4945227[m Resolved pull merge conflict
+[33m8f3c5a9[m Resolved merge conflict in README
+[33mb0982df[m Updated README in main branch
+[33m91f681c[m[33m ([m[1;32mconflict-demo[m[33m)[m Updated README in conflict branch
+[33ma68474b[m Merge pull request #1 from abhisekcode/github-pr-demo
+[33m601b0de[m[33m ([m[1;31morigin/github-pr-demo[m[33m, [m[1;32mgithub-pr-demo[m[33m)[m Added PR workflow section to README
+[33m8e49201[m Create README.md
+[33m84f264d[m[33m ([m[1;32mdocker-support[m[33m)[m Added docker branch test commit
+[33m11ebec8[m Initial Selenium Pytest framework setup
