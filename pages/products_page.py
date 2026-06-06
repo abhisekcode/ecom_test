@@ -5,7 +5,11 @@ from pages.base_page import BasePage
 class ProductsPage(BasePage):
 
     PRODUCTS = (By.CLASS_NAME, "inventory_item")
-    PRODUCT_NAME = (By.CLASS_NAME, "inventory_item_name")
+
+    PRODUCT_NAME = (
+        By.CLASS_NAME,
+        "inventory_item_name"
+    )
 
     CART_ICON = (
         By.CLASS_NAME,
@@ -17,16 +21,10 @@ class ProductsPage(BasePage):
         "shopping_cart_badge"
     )
 
-    # ADD_TO_CART_BUTTON = (
-    #     By.CLASS_NAME,
-    #     "btn_inventory"
-    # )
-
     def get_add_to_cart_button(self, product_name):
 
         return (
             By.XPATH,
-
             f"//div[text()='{product_name}']"
             f"/ancestor::div[@class='inventory_item']"
             f"//button"
@@ -35,41 +33,48 @@ class ProductsPage(BasePage):
     def add_product_to_cart(self, product_name):
 
         button_locator = (
-            self.get_add_to_cart_button(product_name)
+            self.get_add_to_cart_button(
+                product_name
+            )
         )
 
-        button = self.find(button_locator)
+        button = self.find(
+            button_locator
+        )
 
         self.logger.info(
             f"Before click text: {button.text}"
         )
 
-        self.driver.execute_script(
-            "arguments[0].click();",
-            button
-        )
-        # button.click()
+        button.click()
 
-        self.logger.info(
-            f"After click text: {button.text}"
+        new_button = self.find(
+            button_locator
         )
 
         self.logger.info(
-            f"Current URL: {self.driver.current_url}"
+            f"After click text: {new_button.text}"
+        )
+
+        self.logger.info(
+            f"Current URL: "
+            f"{self.driver.current_url}"
         )
 
         self.logger.info(
             f"Added product: {product_name}"
         )
 
-        def get_cart_count(self):
+    def get_cart_count(self):
 
-            count = self.find(
-                self.CART_COUNT
-            ).text
+        count = self.find(
+            self.CART_COUNT
+        ).text
 
-            return int(count)
+        return int(count)
 
     def go_to_cart(self):
 
-        self.click(self.CART_ICON)
+        self.click(
+            self.CART_ICON
+        )

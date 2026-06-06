@@ -23,12 +23,16 @@ class BasePage:
     def find(self, locator):
 
         return self.wait.until(
-            EC.visibility_of_element_located(locator)
+            EC.visibility_of_element_located(
+                locator
+            )
         )
 
     def find_all(self, locator):
 
-        return self.driver.find_elements(*locator)
+        return self.driver.find_elements(
+            *locator
+        )
 
     def click(self, locator):
 
@@ -37,7 +41,9 @@ class BasePage:
         )
 
         self.wait.until(
-            EC.element_to_be_clickable(locator)
+            EC.element_to_be_clickable(
+                locator
+            )
         ).click()
 
     def type(self, locator, text):
@@ -46,4 +52,6 @@ class BasePage:
             f"Typing '{text}' into {locator}"
         )
 
-        self.find(locator).send_keys(text)
+        self.find(locator).send_keys(
+            text
+        )
