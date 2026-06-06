@@ -23,11 +23,6 @@ class DriverManager:
                 options=options
             )
 
-            print(
-                f"Chrome Version: "
-                f"{driver.capabilities['browserVersion']}"
-            )
-
         elif browser == "edge":
 
             options = EdgeOptions()
