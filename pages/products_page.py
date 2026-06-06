@@ -44,7 +44,11 @@ class ProductsPage(BasePage):
             f"Before click text: {button.text}"
         )
 
-        button.click()
+        self.driver.execute_script(
+            "arguments[0].click();",
+            button
+        )
+        # button.click()
 
         self.logger.info(
             f"After click text: {button.text}"
