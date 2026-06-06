@@ -67,6 +67,18 @@ class ProductsPage(BasePage):
             self.get_add_to_cart_button(product_name)
         )
 
+        self.driver.save_screenshot(
+            "after_click.png"
+        )
+        
+        button = self.find(
+            self.get_add_to_cart_button(product_name)
+        )
+        
+        self.logger.info(
+            f"Button text after click: {button.text}"
+        )
+        
         self.logger.info(
             f"Added product: {product_name}"
         )

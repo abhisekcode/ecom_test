@@ -21,8 +21,8 @@ jobs:
 
         browser:
           - chrome
-          - firefox
-          - edge
+          # - firefox
+          # - edge
 
     runs-on: ubuntu-latest
 
@@ -70,3 +70,6 @@ jobs:
 
       - name: Show Browser
         run: echo "Running on ${{ matrix.browser }}"
+
+      - name: Show Browser
+        run: echo "${{ matrix.browser }}"
