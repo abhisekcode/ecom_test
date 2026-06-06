@@ -34,62 +34,37 @@ class ProductsPage(BasePage):
 
     def add_product_to_cart(self, product_name):
 
-        # products = self.find_all(self.PRODUCTS)
-
-        # for product in products:
-
-        #     name = product.find_element(
-        #         *self.PRODUCT_NAME
-        #     ).text
-
-        #     self.logger.info(
-        #         f"Found product: {name}"
-        #     )
-
-        #     if name.strip() == product_name.strip():
-
-        #         button = product.find_element(
-        #             *self.ADD_TO_CART_BUTTON
-        #         )
-
-        #         button.click()
-
-        #         self.logger.info(
-        #             f"Clicked Add to Cart for {name}"
-        #         )
-
-        #         return
-
-        # raise Exception(
-        #     f"Product not found: {product_name}"
-        # )
-        self.click(
+        button_locator = (
             self.get_add_to_cart_button(product_name)
         )
 
-        self.driver.save_screenshot(
-            "after_click.png"
-        )
-        
-        button = self.find(
-            self.get_add_to_cart_button(product_name)
-        )
-        
+        button = self.find(button_locator)
+
         self.logger.info(
-            f"Button text after click: {button.text}"
+            f"Before click text: {button.text}"
         )
-        
+
+        button.click()
+
+        self.logger.info(
+            f"After click text: {button.text}"
+        )
+
+        self.logger.info(
+            f"Current URL: {self.driver.current_url}"
+        )
+
         self.logger.info(
             f"Added product: {product_name}"
         )
 
-    def get_cart_count(self):
+        def get_cart_count(self):
 
-        count = self.find(
-            self.CART_COUNT
-        ).text
+            count = self.find(
+                self.CART_COUNT
+            ).text
 
-        return int(count)
+            return int(count)
 
     def go_to_cart(self):
 
