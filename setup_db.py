@@ -4,7 +4,7 @@ conn = sqlite3.connect("ecom.db")
 cursor = conn.cursor()
 
 cursor.execute("""
-CREATE TABLE cart (
+CREATE TABLE IF NOT EXISTS cart (
     id INTEGER PRIMARY KEY,
     product_name TEXT,
     created_at TEXT
@@ -13,3 +13,5 @@ CREATE TABLE cart (
 
 conn.commit()
 conn.close()
+
+print("Database setup completed.")
